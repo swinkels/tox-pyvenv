@@ -1,5 +1,6 @@
-- [ ] use Cask
-
-- [ ] add README.org to document use of Cask
+- [ ] document usage in README
+- [ ] document use of Cask in README
 - [ ] add unit tests
 - [ ] add check for contents of potential pip directory
+
+- [X] use Cask
