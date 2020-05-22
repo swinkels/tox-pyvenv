@@ -1,0 +1,5 @@
+- [ ] use Cask
+
+- [ ] add README.org to document use of Cask
+- [ ] add unit tests
+- [ ] add check for contents of potential pip directory

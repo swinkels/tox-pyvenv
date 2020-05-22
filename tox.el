@@ -1,3 +1,8 @@
+;;; tox.el --- Provide command to select and activate tox virtualenv
+
+;; Version: 0.0.0
+;; Package-Requires: (pyvenv projectile)
+
 (require 'pyvenv)
 (require 'projectile)
 
@@ -28,3 +33,7 @@
 (dolist (m spacemacs--python-pyvenv-modes)
   (spacemacs/set-leader-keys-for-major-mode m
     "vt" 'tox-pyenv-activate))
+
+(provide 'emacs-tox)
+
+;;; tox.el ends here
