@@ -28,7 +28,7 @@
         (progn
           (pyvenv-activate venv-dir)
           (message "Activated virtualenv in %s" venv-dir))
-      (message "No py36 virtualenv exists in .tox directory"))))
+      (message "No virtualenv directory found in .tox directory"))))
 
 (dolist (m spacemacs--python-pyvenv-modes)
   (spacemacs/set-leader-keys-for-major-mode m
