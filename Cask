@@ -1,7 +1,7 @@
 (source gnu)
 (source melpa)
 
-(package-file "tox.el")
+(package-file "tox-pyvenv.el")
 
 (development
  (depends-on "f")
