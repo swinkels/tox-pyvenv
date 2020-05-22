@@ -21,7 +21,7 @@
 (defun absolute-path (venv-dir-name)
   (concat (tox-directory) venv-dir-name))
 
-(defun tox-pyenv-activate ()
+(defun tox-pyvenv-activate ()
   (interactive)
   (let ((venv-dir (absolute-path (select-venv-dir-name))))
     (if (file-directory-p venv-dir)
@@ -32,7 +32,7 @@
 
 (dolist (m spacemacs--python-pyvenv-modes)
   (spacemacs/set-leader-keys-for-major-mode m
-    "vt" 'tox-pyenv-activate))
+    "vt" 'tox-pyvenv-activate))
 
 (provide 'tox-pyvenv)
 
