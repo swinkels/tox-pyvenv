@@ -19,7 +19,7 @@
       (completing-read "Select tox virtualenv: " venv-dirs))))
 
 (defun absolute-path (venv-dir-name)
-  (concat (tox-directory) venv-dir-name))
+  (concat (tox-dir) venv-dir-name))
 
 (defun tox-pyvenv-activate ()
   (interactive)
