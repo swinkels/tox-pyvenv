@@ -1,0 +1,59 @@
+This repo contains the Emacs package tox-pyvenv. This package provides a
+function that shows the list of Python virtualenvs managed by tox and allows you
+to select and activate one of them.
+
+* Background
+
+Emacs package [[https://github.com/jorgenschaefer/pyvenv][pyvenv]] provides function pyvenv-activate that activates a Python
+virtualenv in Emacs. Once it is active, the Emacs Python development environment
+has access to all the libraries and tools available in that virtualenv and
+things like autocompletion work.
+
+I prefer to use [[https://tox.readthedocs.io/en/latest/][tox]] to manage the virtualenvs of a project and tox always
+creates these virtualenvs in the same subdirectory of the project root, viz.
+.tox. This means that everytime I want to activate such a virtualenv, I have to
+browse to the .tox directory and select the correct virtualenv. This is where
+this package comes in: its function tox-pyvenv-activate lists the virtualenvs in
+the .tox folder so you only have to select the one you want to activate.
+
+* Prerequisites
+
+To do its work, it requires two other packages, the aforementioned pyvenv to
+activate virtualenvs and [[https://docs.projectile.mx/en/latest/][projectile]] to determine the root directory of the
+project.
+
+This package has been developed using Emacs 26.3 on CentOS 7.
+
+* Installation when using Spacemacs
+
+I use the Emacs configuration framework [[https://develop.spacemacs.org/][Spacemacs]] so I provide the installation
+instructions for that context. It should be relatively straightforward to adapt
+these instructions for "plain Emacs".
+
+To let Spacemacs know about the package, add tox-pyvenv as an "additional
+packages" in ~/.spacemacs:
+#+begin_src emacs-lisp
+   dotspacemacs-additional-packages
+   `(
+     (tox-pyvenv :location ,(concat spacemacs-private-directory "tox-pyvenv"))
+     )
+#+end_src
+
+The above snippet tells Spacemacs that the package should be in the private
+directory of Spacemacs, which is ~/.emacs.d/private/ by default. To make sure
+the package is there, clone the GitHub repo of tox-pyvenv in that directory:
+#+begin_example
+$> cd ~/.emacs.d/private
+$> git clone https://github.com/swinkels/tox-pyvenv.git
+#+end_example
+
+At this point Spacemacs can find the package but does not yet load it. To
+automatically load it when function tox-pyvenv-activate is called, add the
+following use-package expression to function dotspacemacs/user-config in
+~/.spacemacs:
+#+begin_src emacs-lisp
+(use-package tox-pyvenv
+  :commands (tox-pyvenv-activate)
+  :init
+    (spacemacs/set-leader-keys-for-major-mode 'python-mode "vt" 'tox-pyvenv-activate))
+#+end_src
