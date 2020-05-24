@@ -30,10 +30,6 @@
           (message "Activated virtualenv in %s" venv-dir))
       (message "No virtualenv directory found in .tox directory"))))
 
-(dolist (m spacemacs--python-pyvenv-modes)
-  (spacemacs/set-leader-keys-for-major-mode m
-    "vt" 'tox-pyvenv-activate))
-
 (provide 'tox-pyvenv)
 
 ;;; tox-pyvenv.el ends here
