@@ -26,9 +26,9 @@ This package has been developed using Emacs 26.3 on CentOS 7.
 
 * Installation when using Spacemacs
 
-I use the Emacs configuration framework [[https://develop.spacemacs.org/][Spacemacs]] so I provide the installation
-instructions for that context. It should be relatively straightforward to adapt
-these instructions for "plain Emacs".
+I use the Emacs configuration framework [[https://develop.spacemacs.org/][Spacemacs]] - its develop branch to be
+precise - so I provide the installation instructions for that context. It should
+be relatively straightforward to adapt these instructions for "plain Emacs".
 
 Spacemacs will automatically retrieve the package from its GitHub repo if you
 add an entry such as the following to the list of "additional packages" in
