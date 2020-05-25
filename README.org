@@ -30,30 +30,25 @@ I use the Emacs configuration framework [[https://develop.spacemacs.org/][Spacem
 instructions for that context. It should be relatively straightforward to adapt
 these instructions for "plain Emacs".
 
-To let Spacemacs know about the package, add tox-pyvenv as an "additional
-packages" in ~/.spacemacs:
+Spacemacs will automatically retrieve the package from its GitHub repo if you
+add an entry such as the following to the list of "additional packages" in
+~/.spacemacs:
 #+begin_src emacs-lisp
    dotspacemacs-additional-packages
    `(
-     (tox-pyvenv :location ,(concat spacemacs-private-directory "tox-pyvenv"))
+     (tox-pyvenv :location (recipe :fetcher github :repo "swinkels/tox-pyvenv"))
      )
 #+end_src
 
-The above snippet tells Spacemacs that the package should be in the private
-directory of Spacemacs, which is ~/.emacs.d/private/ by default. To make sure
-the package is there, clone the GitHub repo of tox-pyvenv in that directory:
-#+begin_example
-$> cd ~/.emacs.d/private
-$> git clone https://github.com/swinkels/tox-pyvenv.git
-#+end_example
-
-At this point Spacemacs can find the package but does not yet load it. To
-automatically load it when function tox-pyvenv-activate is called, add the
-following use-package expression to function dotspacemacs/user-config in
-~/.spacemacs:
+At this point the package will be available to Spacemacs but will not yet be
+loaded. The following use-package expression for dotspacemacs/user-config in
+~/.spacemacs takes care of that:
 #+begin_src emacs-lisp
 (use-package tox-pyvenv
   :commands (tox-pyvenv-activate)
   :init
     (spacemacs/set-leader-keys-for-major-mode 'python-mode "vt" 'tox-pyvenv-activate))
 #+end_src
+This expression establishes two things:
+- tox-pyvenv will be loaded when you call tox-pyvenv-activate for the first time;
+- function tox-pyvenv-activate is bound to ~SPC v t~ in Python mode.
