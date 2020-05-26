@@ -1,9 +1,11 @@
+- [ ] document use of Cask in README
+
 - [ ] automate installation of tox-pyvenv in repo spacemacs-config
 
-- [ ] document use of Cask in README
 - [ ] add unit tests
 - [ ] add check for contents of potential pip directory
 
+- [X] add doc-strings to functions
 - [X] document installation of tox-pyvenv in README
 - [X] document usage in README
 - [X] add tox-pyvenv to current Spacemacs installation
