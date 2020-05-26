@@ -52,3 +52,39 @@ loaded. The following use-package expression for dotspacemacs/user-config in
 This expression establishes two things:
 - tox-pyvenv will be loaded when you call tox-pyvenv-activate for the first time;
 - function tox-pyvenv-activate is bound to ~SPC v t~ in Python mode.
+
+* Development
+
+tox-pyvenv is developed using [[http://cask.readthedocs.io/en/latest/index.html][Cask]], "a project management tool for Emacs Lisp to
+automate the package development cycle". For information about the installation
+Cask I refer to its website. In this README I only show how to use Cask for the
+development of tox-pyvenv.
+
+In the directory of your clone of pyvenv, execute the following command to
+download its development dependencies:
+#+BEGIN_SRC Shell-script
+$> cask init --dev
+#+END_SRC
+This command downloads the development dependencies to subdirectory ~.cask/~.
+
+There is a Makefile in the root of the repo that offers several targets as
+shortcuts to these Cask commands. For example, the command to download the
+development dependencies is also available as target ~init~ of the Makefile:
+#+BEGIN_SRC Shell-script
+$> make init
+#+END_SRC
+
+If you add unit tests to tox-pyvenv, you should place them in subdirectory
+~test/~. To run them, execute the following command:
+#+BEGIN_SRC Shell-script
+$> cask exec ert-runner
+#+END_SRC
+This command is accessible as target ~unit-test~ of the Makefile. This rule is
+the default rule, so just calling ~make~ runs the unit tests.
+
+Cask is also used to generate file tox-pyvenv-pkg.el from the main tox-pyvenv
+file tox-pyvenv.el. To do so, execute
+#+BEGIN_SRC Shell-script
+$> cask pkg-file
+#+END_SRC
+You will have to do this if you upgrade the tox-pyvenv version number.
